@@ -1,0 +1,9 @@
+# Signing keys — never commit
+*.jks
+*.keystore
+*.p12
+keystore.properties
+signKeystore/
+signKeystore.zip
+
+.DS_Store
