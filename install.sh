@@ -14,7 +14,10 @@ mkdir -p "$PREFIX"
 TARGET="$PREFIX/apkey"
 
 # Local checkout: copy the script next to this file; otherwise download it.
-SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]:-$0}")" 2>/dev/null && pwd || true)"
+SRC_DIR=""
+if [[ -n "${BASH_SOURCE[0]:-}" && -f "${BASH_SOURCE[0]}" ]]; then
+  SRC_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+fi
 if [[ -n "$SRC_DIR" && -f "$SRC_DIR/apkey.sh" ]]; then
   cp "$SRC_DIR/apkey.sh" "$TARGET"
 else
